@@ -54,9 +54,9 @@ library(webshot)
 ```
 
 
-```{r front, echo=FALSE, out.width = '75%', fig.cap="New Subsurface Temperature Recorder deployed at White Shoal in Dry Tortugas National Park", fig.align='center'}
+```{r front, echo=FALSE, out.width = '75%', fig.cap="Diver collecting data in Dry Tortugas National Park", fig.align='center'}
 
-knitr::include_graphics("Data/STRfish.jpg")
+knitr::include_graphics("Pictures/Diver_2024.jpg")
 
 ```
 
@@ -80,70 +80,41 @@ p2 <- ggdraw() + draw_image("Logos/CIMAS.png", scale = 0.9)
 plot_grid(p1, p2)
 ```
 
- 
 --------
 
 ### Mission
 
-The	 AOML	 Coral Program tracks the	 status and	 trends of coral reef ecosystems	 of the	 U.S. Atlantic and	Caribbean as part of the National Coral Reef Monitoring Program (NCRMP). This	summary brief provides an	overview of the	 most recent climate monitoring efforts	in Dry Tortugas National Park. 
-
+The	 AOML	 Coral Program tracks the	 status and	 trends of coral reef ecosystems of the	 U.S. Atlantic and	Caribbean as part of the National Coral Reef Monitoring Program (NCRMP). This	summary brief provides an	overview of the	 most recent climate monitoring efforts	in Dry Tortugas National Park. 
 
 ### Expedition summary
 
-* The	 NCRMP Atlantic climate	monitoring team surveyed Dry Tortugas National Park from June 23rd to June 27th 2024.
+* The	NCRMP Atlantic climate	monitoring team surveyed Dry Tortugas National Park from June 23rd to June 27th 2024.
 
-* Four different sites were	visited by	six team members and collaborators completing	a	total of 72 dives.  
-
-
---------
-
-### Data collection summary
-
-**Subsurface temperature:** Subsurface temperature recorders (STRs) were recovered and redeployed	at four sites, representing four different depths (Fig. 1). In total, more than XXX million temperature observations were collected from 4 instruments (Table 1). 
-  - Pulaski Shoal (1m): 311,609 observations 
-  - White Shoal (5m): 311,213 observations 
-  - Bird Key Reef (15m): 311,560 observations 
-  - Black Coral Rock (25m): 165,695 observations 
-
-
-**NCRMP Climate fixed sentinel site monitoring:** At the Bird Key Reef, short term instruments (72h) were deployed to  monitor daily fluctuations in: 
-  - **Current**: 880 observations
-  - **pH**: 879 observations
-  - **Light**: 876 observations
-  - **Carbonate Chemistry**: 24 samples collected
-  
-**Habitat persistence:** Changes in bioerosion and	calcification	 were monitored: 
- - **Carbonate budget surveys**: Benthic cover, sponge, urchin and parrotfish surveys completed at six transects  
- - **Bioerosion**: 10 Bioerosion Monitoring Units (BMUs) collected, 10 redeployed 
- - **Calcification**: 5 Calcification Accretions Units (CAUs) collected, 5 redeployed
- - **Benthic cover**: 6 landscape mosaics
- 
-
-<br>
+* Four different sites (Fig. 1) were	visited by six team members and collaborators completing a	total of 72 dives.  
 
 ```{r mapInfo, include=FALSE, fig.align='center'}
+
 # Map information
+
 # Add info from the sampling stations
-stations <- as.data.frame(read.csv(textConnection("
-Site,	Lat,	Long,	Depth
-Pulaski Shoal,	24.693342,	-82.773034, 01m
-White Shoal,	24.641420,	-82.896200, 05m
-Bird Key Reef,	24.611310,	-82.870500, 15m
-Black Coral Rock,	24.699300,	-83.00218, 25m")))
+  stations <- as.data.frame(read.csv(textConnection("
+  Site,	Lat,	Long,	Depth
+  Pulaski Shoal,	24.693342,	-82.773034, 01m
+  White Shoal,	24.641420,	-82.896200, 05m
+  Bird Key Reef,	24.611310,	-82.870500, 15m
+  Black Coral Rock,	24.699300,	-83.00218, 25m")))
 
-stations$Site<-as.character(stations$Site)
-stations$Depth<-as.character(stations$Depth)
+  stations$Site<-as.character(stations$Site)
+  stations$Depth<-as.character(stations$Depth)
+  
+  # stations$Site<-factor(stations$Site, levels = c("Pulaski Shoal",
+  #                                                 "White Shoal",
+  #                                                 "Bird Key Reef",
+  #                                                 "Black Coral Rock"))
 
-stations$Site<-factor(stations$Site, levels = c(#"NoSite0",
-                                                #"NoSite1",
-                                                "Pulaski Shoal",
-                                                "White Shoal",
-                                                "Bird Key Reef",
-                                                "Black Coral Rock"))
-
-#stations$Depth<-as.factor(stations$Depth), 
-#                          levels = c("-1m", "0m", "1m","5m", "15m","25m"))
-#stations$Depth<-ordered(stations$Depth, levels = c("1m","5m", "15m","25m"))
+  #stations$Depth<-as.factor(stations$Depth), 
+  #                          levels = c("-1m", "0m", "1m","5m", "15m","25m"))
+  #stations$Depth<-ordered(stations$Depth, levels = c("1m","5m", "15m","25m"))
 
 #summary(stations$Depth)
 kable(head(stations, format = "html"))
@@ -198,22 +169,15 @@ map<-leaflet(stations, height = '400px') %>%
     addScaleBar() %>%
     #addMarkers(-83.005, 24.76, icon = myicon) %>%
     fitBounds(lng1=-83.05, lat=24.7, lng2=-82.72, lat2=24.6)
-
-map
 #addControl(map, position="topleft", 
 #          html = '<img src="/Data/North-Arrow.png">')
-  
 ```
 
-<font size="2"> **Figure 1:** Study sites and depths in Dry Tortugas National Park area </font>
+--------
 
------
+### Data collection summary
 
-#### Temperature
-
-The temperatures that marine organisms experience	are a	function	of 	local	oceanographic	conditions and vary with depth. To monitor subsurface temperature, four sites were established	around	the	national park.	Each site represents four depths (1, 5, 15, 25m; Fig. 2). Temperature was measured using SeaBird	Electronics Subsurface Temperature Recorders (STR)s	that 	collected	data 	at 	5-minute intervals. Gaps exist in the data as not all instruments survived the extended deployment time. The full time series of data from	2017-2023	 at all six locations	 and	 all four	 depths	are provided to allow for temporal and spatial comparison of subsurface temperature. (DO WE WANT TO SHOW OLD DATA?)
-
-```{r get Temp, include=FALSE}
+```{r get Temp data, include=FALSE}
 
 # 1. Import all processed temperature data and add depth: 
 
@@ -257,10 +221,154 @@ STR_all$Depth[STR_all$Depth=="05m"]<-"5m"
 
 STR_all$Depth<-factor(STR_all$Depth, 
                 levels = c("1m", "5m", "15m","25m"))
-summary(STR_all$Depth)
-
-summary(STR_all$Transect)
+#summary(STR_all$Depth)
+#summary(STR_all$Transect)
+#summary(STR_all)
 ```
+
+```{r Temp observations, include=FALSE}
+Cases_Loc_depth<-STR_all %>% count(Depth, Transect,
+                                  sort = FALSE)
+Cases_Loc_depth<-as.data.frame(Cases_Loc_depth %>%
+                   pivot_wider(names_from = Depth,
+                   values_from = n))
+Cases_Loc_depth$Total<-rowSums(Cases_Loc_depth[, c(2:5)], na.rm=TRUE)
+#Cases_Loc_depth
+```
+
+**Subsurface temperature:** Subsurface temperature recorders (STRs) were recovered and redeployed	at four sites, representing four different depths (Fig. 1). In total, more than six hundred thousand temperature observations were collected from 4 instruments:
+
+  - **Pulaski Shoal (1m)**: 138,343 observations 
+  - **White Shoal (5m)**: 151,014 observations 
+  - **Bird Key Reef (15m)**: 227,726 observations 
+  - **Black Coral Rock (25m)**: 156,816 observations 
+  
+<br>
+
+```{r pH_and_temp_data, include=FALSE}
+
+# 1.Get the SAMI pH data
+
+pH <- read_csv('Data/DRTO SAMI_Ana.csv',col_types = cols()) %>%
+    select(DateTime = `DateTime (UTC+00:00)`,
+           pH = `SAMIpH`,
+           Temperature = `TempC`) %>%
+    #mutate(DateTime = parse_date_time(DateTime, '%m/%d/%Y %H:%M:%S')) %>%
+    #manual start/stop time of monitoring
+    filter(DateTime >= as.POSIXct('2024-06-23 18:00:00', tz='UTC') &
+         DateTime <= as.POSIXct('2024-06-27 10:45:00', tz='UTC')) %>%
+    mutate(DateTime = with_tz(DateTime, 'America/New_York'))
+```
+
+```{r pH_SAS_data, include=FALSE}
+
+# 1.2. Get the SAS pH data
+
+SAS.data <- read_csv('Data/2024-drto-sas-data-v02.csv',col_types = cols()) %>%
+              mutate(DateTime_EDT = ymd_hms(paste(collected_date, collected_time)), 
+                     tz = 'America/New_York') %>%
+              select(DateTime_EDT, 
+                     Temperature=`Temperature_C`, 
+                     pH_measured, 
+                     pH_calculated) %>%
+              mutate(DateTime_EDT = force_tz(DateTime_EDT, tzone = "America/New_York")) %>%
+    #mutate(DateTime = parse_date_time(DateTime, '%m/%d/%Y %H:%M:%S')) %>%
+    #manual start/stop time of monitoring
+    mutate(DateTime = with_tz(DateTime_EDT, tz='UTC'))%>%
+    filter(DateTime >= as.POSIXct('2024-06-23 18:00:00', tz='UTC') &
+           DateTime <= as.POSIXct('2024-06-27 10:45:00', tz='UTC')) 
+    
+```
+
+```{r Current_data, include=FALSE}
+
+# 2. Get current data
+
+#current <- read.csv('Data/tiltmeter-sn2102061-drto-suite.csv')
+current <- read_csv('Data/tiltmeter-sn2102061-drto-suite.csv', col_types = cols()) %>%
+    select(DateTime = `DateTime (UTC)`,
+           ws = `Speed (cm/s)`,
+           wd = `Heading (degrees)`, 
+           Temperature = `Temperature (C)`
+           ) %>%
+    #manual start/stop time of monitoring
+    filter(DateTime >= as.POSIXct('2024-06-23 18:00:00', tz='UTC') &
+           DateTime <= as.POSIXct('2024-06-27 10:45:00', tz='UTC')) %>%
+    mutate(DateTime = with_tz(DateTime, 'America/New_York'))
+#head(current)
+```
+
+```{r PAR_data, include = FALSE}
+
+# 3. Get the PAR data
+
+  light <- read_csv('Data/ecopar-sn0392-drto-suite.csv',
+                    col_types = cols()) %>%
+          mutate(DateTime = mdy_hms(paste(Date, Time))) %>%
+          select(DateTime, `PAR (calc)`) %>%
+          drop_na() %>%
+          mutate(interval = 0:(nrow(.)-1) %/% 10) %>%
+          group_by(interval) %>%
+          summarise(DateTime = mean(DateTime),
+                    PAR = mean(`PAR (calc)`),
+                    sd = sd(`PAR (calc)`)) %>%
+        select(-interval)%>%
+
+  #manual start/stop time of monitoring
+    filter(DateTime >= as.POSIXct('2024-06-23 18:00:00', tz='UTC') &
+           DateTime <= as.POSIXct('2024-06-27 10:45:00', tz='UTC')) %>%
+    mutate(DateTime = with_tz(DateTime, 'America/New_York'))
+
+```
+
+```{r sentinel numbers, include=F}
+pH_count<-paste0("pH = ", nrow(pH), " observatons")
+pH_count
+
+current_count<-paste0("Current = ", nrow(current), " observatons")
+current_count
+
+light_count<-paste0("Light = ", nrow(light), " observatons")
+light_count
+```
+
+**NCRMP Climate fixed sentinel site monitoring:** At the Bird Key Reef, short term instruments (72h) were deployed to  monitor daily fluctuations in:
+
+  - **Current**: 356 observations
+  - **pH**: 355 observations
+  - **Light**: 354 observations
+  - **Carbonate Chemistry**: 24 samples collected # NOT SURE ABOUT THIS NUMBER
+
+<br>
+
+**Habitat persistence:** Changes in bioerosion and	calcification	 were monitored:
+
+ - **Carbonate budget surveys**: Benthic cover, sponge, urchin and parrotfish surveys completed at six transects  
+ - **Bioerosion**: 10 Bioerosion Monitoring Units (BMUs) collected, 10 redeployed 
+ - **Calcification**: 5 Calcification Accretions Units (CAUs) collected, 5 redeployed
+ - **Benthic cover**: 6 landscape mosaics
+ 
+<br>
+
+
+```{r, plot map, fig.align='center', echo=FALSE}
+map
+```
+
+<font size="2"> **Figure 1:** Study sites and depths in Dry Tortugas National Park area </font>
+
+-----
+
+#### Subsurface Temperature
+
+```{r, STR duration, include=F} 
+STR_max <- STR_all %>% group_by(Depth) %>%
+                summarize(STR_min = min (UTCDateTime, na.rm = T), 
+                          STR_Tmax = max (UTCDateTime, na.rm = T))
+STR_max
+```
+
+The temperatures that marine organisms experience	are a	function of local	oceanographic	conditions and vary with depth. To monitor subsurface temperature, four sites were established	around	the	national park.	Each site represents four depths (1, 5, 15, 25m; Fig. 2). Temperature was measured using SeaBird	Electronics Subsurface Temperature Recorders (STR)s	that 	collected	data at	5-minute intervals. Gaps exist in the data as not all instruments survived the extended deployment time (1m STR stopped recording on November 2022, 5m and 25m stopped recording on December 2022, and 15 m STR stopped recording August 2023)
 
 ```{r Tempvariables, include=FALSE}
 # 3. Define limits for temperature and time (if we want to follow Mike's to automate)
@@ -278,13 +386,12 @@ summary(STR_all$Transect)
 
 ```
 
-
 ```{r plot STR temperature, echo=FALSE, fig.width = 9.5, fig.height = 4}
 
 plot<-ggplot(data = STR_all) +
-      geom_point(aes(x = ymd_hms(UTCDateTime), 
+      geom_line(aes(x = ymd_hms(UTCDateTime), 
                     y = Temperature, colour=Depth),
-                size =0.1) +
+                size =0.5) +
   
   theme_bw() +
   theme(#axis.title.x = element_blank(),
@@ -329,14 +436,13 @@ Figure2 <- ggarrange(plot, box, widths = c(8/10, 2/10))
 
 ```
 
-
 ```{r, echo = F, fig.width = 9.5, fig.height = 4}
 Figure2
 ```
 
-<font size="2"> **Figure 2:** Temperature conditions at four sites in the Dry Tortugas representing a depth gradient: Pulaski Shoal Lighthouse (1m) White Shoal (5m), Bird Key Reef (15m), and Black Coral Rock (25m). Data were collected from June 2021 to XX not lasting the full deployment period. </font>
+<font size="2"> **Figure 2:** Temperature conditions at four sites in the Dry Tortugas representing a depth gradient: Pulaski Shoal Lighthouse (1m) White Shoal (5m), Bird Key Reef (15m), and Black Coral Rock (25m). Data were collected from June 2021 to October 2023 not lasting the full deployment period. </font>
  
-```{r, echo = F, include=T}
+```{r, echo = F, include=F}
 STR_all$MonthYear<-format(STR_all$UTCDateTime, format="%Y-%m")
 STR_all$Month<-format(STR_all$UTCDateTime, format="%m")
 
@@ -358,93 +464,31 @@ str_summary_m <- STR_all %>%
     MaxT = max(Temperature, na.rm = T) 
   ) %>%
   arrange(Month)
+str_summary_m<-str_summary_m %>% mutate_at(vars(MeanT, MinT, MaxT), funs(round(., 2)))
 str_summary_m
 
+str_summary_D <- STR_all %>%
+  group_by(Depth) %>%
+  summarise(
+    MeanT = mean(Temperature, na.rm = T),
+    SD_T = sd(Temperature, na.rm = T),
+    MinT = min(Temperature, na.rm = T),
+    MaxT = max(Temperature, na.rm = T) 
+  ) %>%
+  arrange(Depth)
+str_summary_D
 ```
 
-Temperature values were similar among the 1m, 5m and 15m depths with the lowest temperatures recorded during February 2021 (20.8, 20.7, and 19.9 $^\circ$C, respectively) and the the higest temperatures during the summer of 2019 and 2020 (31.7, 31.6, and 31.5 $^\circ$C, respectively). Though the 25m STR stopped recording on February 7, 2020, it detected consistent temperature stratification at this site during the summers when it was active. Temperatures at 25m were on average 5-6$^\circ$C lower during summer 2018, and 1$^\circ$C lower during summer 2019, compared with the values at other depths (Fig. 2). 
-(UPDATE SUMMARY STATS)
+Mean temperature values were slightly higher at 1m, 5m, and 15m (27.6, 27.7, and 27.5 $^\circ$C, respectively) compared to 25m (27.2 $^\circ$C). The lowest monthly mean temperatures occurred in January or February (22.7, 23.0, and 23.5 and 22.9 $^\circ$C, respectively) and the the higest monthly mean temperatures during August or September (30.3, 30.4, 30.7 and 30.0 $^\circ$C, respectively; Fig. 2). 
+
 -----
 
 #### Diurnal Suite Deployment
 
-Seawater carbonate chemistry can fluctuate diurnally	 due	 to	 biological forcing	 processes	 such	 as 	photosynthesis and 	respiration,	as 	well	as calcification	and	dissolution.	To	characterize	this,	discrete water samples (Fig. 3) were collected at three-hour	intervals 	(n=15) 	using	Subsurface Automatic Samplers (SAS, www.coral.noaa.gov/accrete/sas). These samples will be analyzed for Total Alkalinity (TA), Dissolved Inorganic	Carbon	(DIC),	and Spectrophotometric pH (SpecpH), which will be used 	to	calculate	pCO2 and 	aragonite 	saturation	 state	 (ΩAragonite). A	 suite of instruments was deployed for a 72-hour	period	at the Bird Key Reef 15m site. A SAMI pH was used to log pH, an EcoPAR measured Photosynthetically Active Radiation (PAR), and a Lowell Tiltmeter measured current speed and direction. Each instrument collected	measurements at 15-minute intervals (Fig. 3). 
-
-```{r pH_and_temp_data, include=FALSE}
-
-# 1.Get the pH data
-pH <- read_csv('Data/DRTO SAMI_Ana.csv',col_types = cols()) %>%
-    select(DateTime = `DateTime (UTC+00:00)`,
-           pH = `SAMIpH`,
-           Temperature = `TempC`) %>%
-    #mutate(DateTime = parse_date_time(DateTime, '%m/%d/%Y %H:%M:%S')) %>%
-    #manual start/stop time of monitoring
-    filter(DateTime >= as.POSIXct('2024-06-23 18:00:00', tz='UTC') &
-         DateTime <= as.POSIXct('2024-06-27 10:45:00', tz='UTC')) %>%
-    mutate(DateTime = with_tz(DateTime, 'America/New_York'))
-```
+Seawater carbonate chemistry can fluctuate diurnally due to	 biological forcing	 processes such as	photosynthesis and 	respiration,	as 	well	as calcification	and	dissolution.	To	characterize	this,	discrete water samples (Fig. 3) were collected at three-hour	intervals 	(n=15) 	using	Subsurface Automatic Samplers (SAS, www.coral.noaa.gov/accrete/sas). These samples will be analyzed for Total Alkalinity (TA), Dissolved Inorganic	Carbon	(DIC),	and Spectrophotometric pH (SpecpH), which will be used 	to	calculate	pCO2 and 	aragonite 	saturation	 state	 (ΩAragonite). 
 
 
-```{r pH_SAS_data, include=FALSE}
-
-# 1.Get the pH data
-SAS.data <- read_csv('Data/2024-drto-sas-data.csv',col_types = cols()) %>%
-              mutate(DateTime_EDT = ymd_hms(paste(collected_date, collected_time)), 
-                     tz = 'America/New_York') %>%
-              select(DateTime_EDT, 
-                     Temperature=`Temperature_C`, 
-                     pH_measured, 
-                     pH_calculated) %>%
-              mutate(DateTime_EDT = force_tz(DateTime_EDT, tzone = "America/New_York")) %>%
-    #mutate(DateTime = parse_date_time(DateTime, '%m/%d/%Y %H:%M:%S')) %>%
-    #manual start/stop time of monitoring
-    mutate(DateTime = with_tz(DateTime_EDT, tz='UTC'))%>%
-    filter(DateTime >= as.POSIXct('2024-06-23 18:00:00', tz='UTC') &
-           DateTime <= as.POSIXct('2024-06-27 10:45:00', tz='UTC')) 
-    
-```
-
-```{r Current_data, include=FALSE}
-
-# 2. Get current data
-
-#current <- read.csv('Data/tiltmeter-sn2102061-drto-suite.csv')
-current <- read_csv('Data/tiltmeter-sn2102061-drto-suite.csv', col_types = cols()) %>%
-    select(DateTime = `DateTime (UTC)`,
-           ws = `Speed (cm/s)`,
-           wd = `Heading (degrees)`, 
-           Temperature = `Temperature (C)`
-           ) %>%
-    #manual start/stop time of monitoring
-    filter(DateTime >= as.POSIXct('2024-06-23 18:00:00', tz='UTC') &
-           DateTime <= as.POSIXct('2024-06-27 10:45:00', tz='UTC')) %>%
-    mutate(DateTime = with_tz(DateTime, 'America/New_York'))
-#head(current)
-```
-
-
-```{r PAR_data, include = FALSE}
-
-# 3. Get the PAR data  
-  light <- read_csv('Data/ecopar-sn0392-drto-suite.csv',
-                    col_types = cols()) %>%
-          mutate(DateTime = mdy_hms(paste(Date, Time))) %>%
-          select(DateTime, `PAR (calc)`) %>%
-          drop_na() %>%
-          mutate(interval = 0:(nrow(.)-1) %/% 10) %>%
-          group_by(interval) %>%
-          summarise(DateTime = mean(DateTime),
-                    PAR = mean(`PAR (calc)`),
-                    sd = sd(`PAR (calc)`)) %>%
-        select(-interval)%>%
-
-  #manual start/stop time of monitoring
-    filter(DateTime >= as.POSIXct('2024-06-23 18:00:00', tz='UTC') &
-           DateTime <= as.POSIXct('2024-06-27 10:45:00', tz='UTC')) %>%
-    mutate(DateTime = with_tz(DateTime, 'America/New_York'))
-
-```
-
+A suite of instruments was deployed for a 72-hour	period	at the Bird Key Reef 15m site. A SAMI pH was used to log pH, an EcoPAR measured Photosynthetically Active Radiation (PAR), and a Lowell Tiltmeter measured current speed and direction. Each instrument collected	measurements at 15-minute intervals (Fig. 3). 
 
 ```{r ph and temp combined v3,echo=FALSE, warning=FALSE,fig.width = 9.5, fig.height = 3.5}
 
@@ -474,19 +518,19 @@ pH_Temp_Plot<-ggplot(data = pH) +
             size=0.8) +
   geom_line(aes(x=DateTime, y=pH, color = "pH"),
             size=0.8) +
-  #scale_color_manual(values=c("black", "red"))+
+  scale_color_manual(values=c("black", "red"))+
   
-  # SAS data
-  geom_point(data= SAS.data, aes(x=DateTime, y=pH_measured, color = "SAS meassured pH"),
-            size=1.5) +
-  geom_point(data= SAS.data, aes(x=DateTime, y=pH_calculated, color = "SAS calculated pH"),
-            size=1.5) +
-  geom_point(data= SAS.data, aes(x=DateTime, y=Temp.adj, color = "SAS temperature"),
-            size=1.5) +
-  scale_color_manual(values=c("black", "green4", "purple4", "red", "red4"))+
+  # # SAS data
+  # geom_point(data= SAS.data, aes(x=DateTime, y=pH_measured, color = "SAS meassured pH"),
+  #           size=1.5) +
+  # geom_point(data= SAS.data, aes(x=DateTime, y=pH_calculated, color = "SAS calculated pH"),
+  #           size=1.5) +
+  # geom_point(data= SAS.data, aes(x=DateTime, y=Temp.adj, color = "SAS temperature"),
+  #           size=1.5) +
+  # scale_color_manual(values=c("black", "green4", "purple4", "red", "red4"))+
   
   # Axes
-  scale_y_continuous(limits = c(7.85, 8.25),
+  scale_y_continuous(limits = c(8.02, 8.25),
                      name="pH (Total scale)",
                      sec.axis = sec_axis(~(.-4.98)/0.1099,
                                 name="Temperature (\u00B0C)"))  +
@@ -596,24 +640,17 @@ ggdraw(plot_grid(plot_grid(pH_Temp_Plot,
                  ncol = 1, rel_heights=c(1.1, 0.15)))
 ```
 
-<font size="2">**Figure 3:** Bird Key Reef (15m) diurnal suite monitoring from June 23th to 27th. Top panel: pH and temperature	 from SeaFET. Bottom panel: Photosynthetically Available Radiation (PAR) and current speed from EcoPAR and Tiltmeter. Shading denotes nighttime throughout the	 sequence	 of the	 plot. Instruments measured parameters every 15 minutes </font>
-
-
-
-```{r SASs, echo=FALSE, out.width = '50%', fig.cap="Submered Automated Samplers (SAS) deployed to collect water samples every 3 hours", fig.align='center'}
-
-knitr::include_graphics("Data/SAS.jpg")
-
-```
+<font size="2">**Figure 3:** Bird Key Reef (15m) diurnal suite monitoring from June 23th to 27th. Top panel: pH and temperature from SeaFET. Bottom panel: Photosynthetically Available Radiation (PAR) and current speed from EcoPAR and Tiltmeter. Shading denotes nighttime throughout the	 sequence	 of the	 plot. Instruments measured parameters every 15 minutes </font>
 
 -----
 
 #### Habitat persistence
 
-**Carbonate budget** assessments use transectbased 	surveys (ReefBudget,	Perry	 et al. 2012)	to	quantify	the	abundance	of	carbonate	producers	(e.g., corals	and crustose coralline algae, CCA), and carbonate	bioeroders,	(e.g.,	parrotfish	and	sea	urchins). Abundances are multiplied by taxonspecific rates of carbonate alteration to determine if	a reef	is	in	a 	state	of	net 	accretion	(habitat growth)	or 	net	loss	(habitat loss; Fig. 4). At Bird Key Reef,	six	transects were	surveyed in	2015, 2018, 2021 and 	2024 to 	obtain	carbonate 	budgets.	FIX SUMMATION TEXT FOR DRTP These 	data	 show stable	 carbonate	 production	 over	 the	monitoring time points. The transect results showed	 positive	 carbonate	 budgets	 in	 2017	 and	2023, which implies that this site supported reef accretion	over 	the 	past	 eight 	years.	However,	carbonate production significantly declined from	5.08	 ± 1.78	 sd	 kg	 m-2 yr-1 in	2017	to	1.33	 ± 1.78sd	 kg	m-2 yr-1.	 This change was mainly driven by a reduction in coral production from	 6.90 ± 2.13	 in	2017	 to	 1.98	 ± 0.326	 in	 2023. 
+**Carbonate budget** assessments use transectbased 	surveys (ReefBudget,	Perry	 et al. 2012)	to	quantify	the	abundance	of	carbonate	producers	(e.g., corals	and crustose coralline algae, CCA), and carbonate	bioeroders,	(e.g.,	parrotfish	and	sea	urchins). Abundances are multiplied by taxonspecific rates of carbonate alteration to determine if	a reef	is	in	a 	state	of	net 	accretion	(habitat growth)	or 	net	loss	(habitat loss; Fig. 4). 
 
 ```{r, Carbonate_B_plot, echo=FALSE, warning=FALSE, fig.width = 7.5, fig.height = 3.5}
 ## boxplots production
+
 data <- read.csv("Data/DRTO_CB.csv")
 mdata<-melt(data,id.vars=c(8:13))
 
@@ -659,22 +696,36 @@ ggarrange(CB_A_plot, CB_B_plot,
 <font size="2">**Figure 4:** Net carbonate production and the magnitude of carbonate alteration by calcifying or bioeroding functional 	groups.	 CCA represents crustose coralline algae. PF	 represents	 parrotfish. The	 scale	 of the	 y-axis varies for each	 functional	 group. </font>
 
 
+```{r, CB summary, echo = F, include=F} 
+CB_year <- CB %>% group_by(Year) %>%
+                summarize(CB_mean = mean (value, na.rm = T), 
+                          CB_sd = sd (value, na.rm = T))
+CB_year
+
+Coral_year <- mdata[mdata$variable=="Coral production", ] %>% group_by(Year) %>%
+                summarize(CB_mean = mean (value, na.rm = T), 
+                          CB_sd = sd (value, na.rm = T))
+Coral_year
+```
+
+
+At Bird Key Reef,	six	transects have been	surveyed in	2015, 2018, 2021 and again in	2024 to obtain	carbonate budgets (Fig. 4).	These data show positive carbonate	 budgets all years, which implies that this site supported reef accretion.	However, carbonate production significantly declined from	1.77 ± 0.72	(sd) kg	 m<sup>-2</sup> yr<sup>-1</sup> in	2021	to	0.77 ± 0.72 kg	<sup>-2</sup> <sup>-1</sup> in 2024.	This change was mainly driven by a reduction in coral production from	1.7 ± 0.72	in	2021	to	0.56 ± 0.30	 in	 2023. 
 
 **Landscape mosaics** are used to quantify the benthic community, and to monitor changes in coral cover over time. Thousands of underwater images are digitally stitched together to create a high-resolution archive of the reef at the time of collection.
 
 
-```{r mosaic, echo=FALSE, out.width = '50%', fig.cap="Landscape Mosaic collected from transect 6", fig.align='center'}
+```{r mosaic, echo=FALSE, out.width = '50%', fig.cap="Figura 5: Diver collecting photos for landscape mosaics", fig.align='center'}
 
-#knitr::include_graphics("Data/mosaic.jpg")
+knitr::include_graphics("Pictures/Mosaics.jpg")
 
 ```
 
 **Calcification Accretion Units (CAUs)** and **Bioerosion Monitoring Units (BMUs)** were	used	to	investigate the balance between calcification and erosion. CAUs and BMUs were collected and redeployed for the next sampling cycle. CAUs are processed by the NCRMP Pacific Climate group and the data will be available within a year. BMUs will	be dried and cleaned using a hydrogen peroxide solution. Samples will be weighed and scanned using a	CT scanner and then compared to their pre-scans	 to	 quantify	 bioerosion.  
 
 
-```{r BMUs, echo=FALSE, out.width = '50%', fig.cap="CAU and BMU pair before retreval after being deployed for three years. CAUs are two parallel PVC plates to quantify settled accretors. BMU is mounted coral skeleton installed at the base of the metal stake and has been encrusted.", fig.align='center'}
+```{r BMUs, include=FALSE, out.width = '50%', fig.cap="CAU and BMU pair before retreval after being deployed for three years. CAUs are two parallel PVC plates to quantify settled accretors. BMU is mounted coral skeleton installed at the base of the metal stake and has been encrusted.", fig.align='center'}
 
-knitr::include_graphics("Data/CAUBMU.jpg")
+#knitr::include_graphics("Data/CAUBMU.jpg")
 
 ```
 
@@ -713,9 +764,7 @@ http://www.aoml.noaa.gov/
 
 ### Acknowledgements
 
-
 These efforts were jointly funded by NOAA's CRCP project #743 and OAP. We would like to thank the National Park Service and Florida Keys National Marine Sanctuary for permitting support and the ANGARI Foundation for field support.
-
 
 ```{r fundingsources, include=FALSE, fig.align='left', out.width='35%'}
 F1 <- ggdraw() + draw_image("Logos/CRCP.jpeg", scale = 0.4)
@@ -736,7 +785,7 @@ funding
 ### Our Team
 
 ```{r team, echo=FALSE, out.width = '50%', fig.align='center'}
-#knitr::include_graphics("Data/Fieldteam.jpg")
+knitr::include_graphics("Pictures/Team.jpg")
 ```
 
 **Field team members**:  Nicole Besemer, Ana Palacio, Ian Enochs, Taylor Gill, Rich Karp, and Ashley Stevens

@@ -1,12 +1,12 @@
 ---
 output:
+  word_document: default
+  pdf_document: default
+  always_allow_html: true
   html_document:
     fig_height: 5
     fig_width: 5
     fig_position: center
-  pdf_document: default
-  always_allow_html: true
-  word_document: default
 editor_options: 
   chunk_output_type: console
 ---
@@ -352,7 +352,7 @@ light_count
 
 
 ```{r, plot map, fig.align='center', echo=FALSE}
-map
+#map
 ```
 
 <font size="2"> **Figure 1:** Study sites and depths in Dry Tortugas National Park area </font>
@@ -396,7 +396,7 @@ plot<-ggplot(data = STR_all) +
   theme_bw() +
   theme(#axis.title.x = element_blank(),
         panel.grid = element_blank(),
-        legend.position = c(0.5, 0.93),
+        legend.position = c(0.5, 0.91),
         #legend.position = c(0.5, 0.05) ,
         legend.direction = "horizontal" ,
         plot.margin = unit(c(5.5, 5.5, 5.5, 5.5), "points"),
@@ -625,19 +625,19 @@ Legend2<-Light_Current + theme(legend.position = "bottom",
   Legend2<-get_legend(Legend2)
   #ggdraw(Legend2)
   
+ggdraw(plot_grid(plot_grid(pH_Temp_Plot,
+                           Light_Current,
+                           ncol=1, align='v',
+                           rel_heights = c(0.9, 1)),
+                 plot_grid(Legend1, Legend2, ncol=2),
+                 ncol = 1, rel_heights=c(1, 0.1)))
+
 # ggdraw(plot_grid(plot_grid(pH_Temp_Plot,
 #                            Light_Current,
 #                            ncol=1, align='v', 
 #                            rel_heights = c(0.9, 1)),
-#                  plot_grid(Legend1, Legend2, ncol=2), 
-#                  ncol = 1, rel_heights=c(1, 0.1)))
-
-ggdraw(plot_grid(plot_grid(pH_Temp_Plot,
-                           Light_Current,
-                           ncol=1, align='v', 
-                           rel_heights = c(0.9, 1)),
-                 plot_grid(Legend1, Legend2, ncol=1), 
-                 ncol = 1, rel_heights=c(1.1, 0.15)))
+#                  plot_grid(Legend1, Legend2, ncol=1), 
+#                  ncol = 1, rel_heights=c(1.1, 0.15)))
 ```
 
 <font size="2">**Figure 3:** Bird Key Reef (15m) diurnal suite monitoring from June 23th to 27th. Top panel: pH and temperature from SeaFET. Bottom panel: Photosynthetically Available Radiation (PAR) and current speed from EcoPAR and Tiltmeter. Shading denotes nighttime throughout the	 sequence	 of the	 plot. Instruments measured parameters every 15 minutes </font>
@@ -714,7 +714,7 @@ At Bird Key Reef,	six	transects have been	surveyed in	2015, 2018, 2021 and again
 **Landscape mosaics** are used to quantify the benthic community, and to monitor changes in coral cover over time. Thousands of underwater images are digitally stitched together to create a high-resolution archive of the reef at the time of collection.
 
 
-```{r mosaic, echo=FALSE, out.width = '50%', fig.cap="Figura 5: Diver collecting photos for landscape mosaics", fig.align='center'}
+```{r mosaic, echo=FALSE, out.width = '50%', fig.cap="Figure 5: Diver collecting photos for landscape mosaics", fig.align='center'}
 
 knitr::include_graphics("Pictures/Mosaics.jpg")
 
@@ -723,9 +723,9 @@ knitr::include_graphics("Pictures/Mosaics.jpg")
 **Calcification Accretion Units (CAUs)** and **Bioerosion Monitoring Units (BMUs)** were	used	to	investigate the balance between calcification and erosion. CAUs and BMUs were collected and redeployed for the next sampling cycle. CAUs are processed by the NCRMP Pacific Climate group and the data will be available within a year. BMUs will	be dried and cleaned using a hydrogen peroxide solution. Samples will be weighed and scanned using a	CT scanner and then compared to their pre-scans	 to	 quantify	 bioerosion.  
 
 
-```{r BMUs, include=FALSE, out.width = '50%', fig.cap="CAU and BMU pair before retreval after being deployed for three years. CAUs are two parallel PVC plates to quantify settled accretors. BMU is mounted coral skeleton installed at the base of the metal stake and has been encrusted.", fig.align='center'}
+```{r BMUs, echo=FALSE, out.width = '50%', fig.cap="Figure 6: CAU and BMU pair deployed during the expedition. CAUs are two parallel PVC plates to quantify settled accretors. BMU is mounted coral skeleton installed at the base of the metal stake and has been encrusted.", fig.align='center'}
 
-#knitr::include_graphics("Data/CAUBMU.jpg")
+knitr::include_graphics("Pictures/CAUBMU.jpg")
 
 ```
 

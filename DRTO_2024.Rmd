@@ -1,12 +1,12 @@
 ---
 output:
-  word_document: default
-  pdf_document: default
-  always_allow_html: true
   html_document:
     fig_height: 5
     fig_width: 5
     fig_position: center
+  pdf_document: default
+  always_allow_html: true
+  word_document: default
 editor_options: 
   chunk_output_type: console
 ---
@@ -74,8 +74,8 @@ N. Besemer, A. Palacio, M. Jankulak, A.Webb, I. Enochs - November 2024
 </h5>
 
 ```{r logos, echo=FALSE, fig.align='left', out.width='20%'}
-p1 <- ggdraw() + draw_image("Logos/AOML.jpg", scale = 1)
-p2 <- ggdraw() + draw_image("Logos/CIMAS.png", scale = 0.9)
+p1 <- ggdraw() + draw_image("Logos/NOAA.jpg", scale = 0.8)
+p2 <- ggdraw() + draw_image("Logos/UM.png", scale = 1)
 
 plot_grid(p1, p2)
 ```
@@ -352,7 +352,7 @@ light_count
 
 
 ```{r, plot map, fig.align='center', echo=FALSE}
-#map
+map
 ```
 
 <font size="2"> **Figure 1:** Study sites and depths in Dry Tortugas National Park area </font>
@@ -766,19 +766,22 @@ http://www.aoml.noaa.gov/
 
 These efforts were jointly funded by NOAA's CRCP project #743 and OAP. We would like to thank the National Park Service and Florida Keys National Marine Sanctuary for permitting support and the ANGARI Foundation for field support.
 
-```{r fundingsources, include=FALSE, fig.align='left', out.width='35%'}
+```{r fundingsources, include=FALSE, fig.align='left', out.width='80%'}
 F1 <- ggdraw() + draw_image("Logos/CRCP.jpeg", scale = 0.4)
 #F_space<-ggplot() +
 #    theme_void() +
 #    geom_text(aes(0,0,label='')) +
 #    xlab(NULL)
 F2 <- ggdraw() + draw_image("Logos/OAP.png", scale = 1)
+F3 <- ggdraw() + draw_image("Logos/ANGARI.png", scale = 1) 
+F4 <- ggdraw() + draw_image("Logos/NPS.png", scale = 1.1)
+F5 <- ggdraw() + draw_image("Logos/NMKS.png", scale = 1.1)
 
-funding<-plot_grid(F1, F2, nrow=1, rel_widths = c(2,2))
+funding<-plot_grid(F2,F1, F4, F3, F5, nrow=1, rel_widths = c(2,2, 2.2, 2, 2.2))
 
 ```
 
-```{r funding, echo=FALSE, fig.align='left', out.width='30%'}
+```{r funding, echo=FALSE, fig.align='left', out.width='60%'}
 funding
 ```
 

@@ -84,7 +84,7 @@ plot_grid(p1, p2)
 
 ### Mission
 
-The	 AOML	 Coral Program tracks the	 status and	 trends of coral reef ecosystems of the	 U.S. Atlantic and	Caribbean as part of the National Coral Reef Monitoring Program (NCRMP). This	summary brief provides an	overview of the	 most recent climate monitoring efforts	in Dry Tortugas National Park. 
+The	 Atlantic Oceanographic and Meteorological Laboratory (AOML) Coral Program tracks the status and	trends of coral reef ecosystems of the U.S. Atlantic and	Caribbean as part of the National Coral Reef Monitoring Program (NCRMP). This	summary brief provides an	overview of the	 most recent climate monitoring efforts	in Dry Tortugas National Park. 
 
 ### Expedition summary
 
@@ -648,7 +648,7 @@ ggdraw(plot_grid(plot_grid(pH_Temp_Plot,
 
 **Carbonate budget** assessments use transectbased 	surveys (ReefBudget,	Perry	 et al. 2012)	to	quantify	the	abundance	of	carbonate	producers	(e.g., corals	and crustose coralline algae, CCA), and carbonate	bioeroders,	(e.g.,	parrotfish	and	sea	urchins). Abundances are multiplied by taxonspecific rates of carbonate alteration to determine if	a reef	is	in	a 	state	of	net 	accretion	(habitat growth)	or 	net	loss	(habitat loss; Fig. 4). 
 
-```{r, Carbonate_B_plot, echo=FALSE, warning=FALSE, fig.width = 7.5, fig.height = 3.5}
+```{r, Carbonate_B_plot, echo=FALSE, warning=FALSE, fig.width = 7.8, fig.height = 3.5}
 ## boxplots production
 
 data <- read.csv("Data/DRTO_CB.csv")
@@ -669,7 +669,7 @@ CB_A_plot<-ggplot(CB,aes(Year,value,fill=Year))+
   theme(panel.grid.major = element_blank(),
         panel.grid.minor=element_blank(),
         legend.position = "none")+
-  ylab(expression(paste( " [ kg m"^"-2"," yr"^"-1","]")))
+  ylab(expression(paste( "Carbonate production (kg m"^"-2"," yr"^"-1",")")))
 
 
 mdata<-melt(data,id.vars=c(1,8:13))
@@ -686,7 +686,7 @@ CB_B_plot<-ggplot(mdata,aes(Year,value,fill=Year))+
   theme(panel.grid.major = element_blank(),
         panel.grid.minor=element_blank(),
         legend.position = "none")+
-  ylab(expression(paste( " [ kg m"^"-2"," yr"^"-1","]")))
+  ylab(expression(paste( "Carbonate alteration (kg m"^"-2"," yr"^"-1",")")))
 
 ggarrange(CB_A_plot, CB_B_plot, 
           #labels = c("A", "B", "C"),
@@ -733,14 +733,14 @@ knitr::include_graphics("Pictures/CAUBMU.jpg")
 
 ### About the monitoring program
 
-AOML's climate monitoring is a key part of the National Coral Reef Monitoring Program of NOAA's Coral Reef Conservation Program (CRCP), providing integrated, consistent, and comparable data across U.S. Managed coral reef ecosystems.
+AOML's climate monitoring is a key part of the National Coral Reef Monitoring Program of NOAA's Coral Reef Conservation Program (CRCP), providing integrated, consistent, and comparable data across U.S. coral reef ecosystems.
 CRCP monitoring efforts aim to:
 
 * Document the status of reef species of ecological and economic importance
 * Track and assess changes in reef communities in response to environmental stressors or human activities
 * Deliver	 high–quality	data,	data	products,	and 	tools to 	the 	coral	reef 	conservation	 community 
 
-### Point of Contact
+### Points of contact
 
 Atlantic Climate team lead: nicole.besemer@noaa.gov
 
@@ -764,7 +764,7 @@ http://www.aoml.noaa.gov/
 
 ### Acknowledgements
 
-These efforts were jointly funded by NOAA's CRCP project #743 and OAP. We would like to thank the National Park Service and Florida Keys National Marine Sanctuary for permitting support and the ANGARI Foundation for field support.
+These efforts were jointly funded by NOAA's CRCP project #743 and NOAA’s Ocean Acidification program (OAP). We would like to thank the National Park Service and Florida Keys National Marine Sanctuary for permitting support and the ANGARI Foundation for field support.
 
 ```{r fundingsources, include=FALSE, fig.align='left', out.width='80%'}
 F1 <- ggdraw() + draw_image("Logos/CRCP.jpeg", scale = 0.4)
